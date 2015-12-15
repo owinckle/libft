@@ -6,7 +6,7 @@
 /*   By: owinckle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 13:38:44 by owinckle          #+#    #+#             */
-/*   Updated: 2015/12/15 12:07:42 by owinckle         ###   ########.fr       */
+/*   Updated: 2015/12/15 16:48:32 by owinckle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ char	*ft_strnew(size_t size)
 
 	new = ((char*)ft_memalloc(sizeof(char) * (size + 1)));
 	if (new == NULL)
-		return NULL;
+		return (NULL);
 	return (new);
 }

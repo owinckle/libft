@@ -6,7 +6,7 @@
 /*   By: owinckle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 16:42:25 by owinckle          #+#    #+#             */
-/*   Updated: 2015/12/15 11:51:25 by owinckle         ###   ########.fr       */
+/*   Updated: 2015/12/15 16:46:22 by owinckle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,21 @@
 
 char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 {
-	size_t	len;
-	int		lastresult;
+	size_t	i;
 
 	if (*s2 == '\0')
 		return ((char*)s1);
-	len = ft_strlen(s2);
-	lastresult = 1;
-	while (len <= n && *s1 != '\0'
-			&& (lastresult = ft_strncmp(s1, s2, len)))
+	i = 0;
+	while (*s1 && n)
 	{
-		n--;
+		if (*s1 == s2[i])
+			i++;
+		else
+			i = 0;
+		if (s2[i] == '\0')
+			return ((char*)(s1 - i + 1));
 		s1++;
+		n--;
 	}
-	if (lastresult != 0)
-		return (NULL);
-	else
-		return ((char *)s1);
+	return (NULL);
 }
