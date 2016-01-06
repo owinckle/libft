@@ -6,7 +6,7 @@
 /*   By: owinckle <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/05 15:25:43 by owinckle          #+#    #+#             */
-/*   Updated: 2016/01/05 15:41:21 by owinckle         ###   ########.fr       */
+/*   Updated: 2016/01/06 14:04:13 by owinckle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,14 @@ t_list	*ft_lstnew(void const *content, size_t content_size)
 		list->content = NULL;
 		list->content_size = 0;
 	}
+	else
+	{
+		list->content = malloc(sizeof(content));
+		if (!list->content)
+			return (NULL);
+		ft_memcpy((list->content), content, sizeof(content));
+		list->content_size = content_size;
+	}
 	list->next = NULL;
-	list->content = malloc(sizeof(content_size));
-	ft_memcpy(list->content, content, content_size);
-	list->content_size = content_size;
 	return (list);
 }
